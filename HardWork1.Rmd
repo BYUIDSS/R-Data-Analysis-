@@ -1,0 +1,282 @@
+---
+title: "Hard Work 1"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+    toc: true
+    toc_float: true
+---
+
+```{r, include = FALSE}
+library(data.table)
+library(mosaic)
+library(pander)
+```
+
+## Instructions
+
+1. Study Sections 1-5 of Chapter 1 -- "Linear Regression with One Predictor Variable."    
+<span id=note>(You may also choose to study Sections 6-8 if you are interested in the theory behind regression.)</span>
+
+2. Attempt and submit at least <span id=recpoints style="padding-left:0px;">{24}</span> Hard Work Points by Saturday at 11:59 PM.    
+<span id=note>Over <span id=points style="padding-left:0px;">{30}</span> gets you {+1} Final Exam Point.</span>    
+<span id=note>Over <span id=points style="padding-left:0px;">{40}</span> gets you {+2} Final Exam Points.</span>    
+<span id=note>Over <span id=points style="padding-left:0px;">{50}</span> gets you {+3} Final Exam Points.</span>
+
+<span id=recpoints>{...}</span> are "Recommended" and will earn you the minimum points required. 
+
+<span id=points>{...}</span> are optional, but the more of these you complete, the better.
+
+The format of reporting your score on each problem is: 
+
+**\{ Attempted Points "A=" | Earned Points "E=" \}**
+
+* **Attempted Points**: You gave the problem your time and energy, but aren't sure if you are completing the problem correctly or not. You will be graded on what you attempt.
+* **Earned Points**: You are confident you have completed the problem correctly by comparing your work to the [Student Solutions](http://fac.ksu.edu.sa/sites/default/files/1_58.pdf), other students in class, or the examples in the book. This should always be less than or equal to **Attempted Points**. 
+
+By marking points in this way, your teacher can identify problems that you are working on, but having difficulty with, and can help you and the class better understand those concepts.
+
+<br/>
+
+## Reading Points <span id=headpoints>{21} Possible</span>
+
+### Section 1.1 <span id=recpoints>{3}</span><span id=report>{ A=3 | E=0 }</span>
+
+
+### Section 1.2 <span id=recpoints>{3}</span><span id=report>{ A=3 | E=0 }</span>
+
+
+### Section 1.3 <span id=recpoints>{3}</span><span id=report>{ A=3 | E=0 }</span>
+
+
+### Section 1.4 <span id=recpoints>{2}</span><span id=report>{ A=2 | E=0 }</span>
+
+
+### Section 1.5 <span id=recpoints>{2}</span><span id=report>{ A=2 | E=0 }</span>
+
+
+### Section 1.6 <span id=points>{3}</span><span id=report>{ A=0 | E=0 }</span>
+
+
+### Section 1.7 <span id=points>{2}</span><span id=report>{ A=0 | E=0 }</span>
+
+
+### Section 1.8 <span id=points>{3}</span><span id=report>{ A=0 | E=0 }</span>
+
+
+<br/>
+
+## Theory Points <span id=headpoints>{11} Possible</span>
+
+
+### Problem 1 <span id=recpoints>{3}</span><span id=report>{ A=3 | E=0 }</span>
+
+Recreate this chalkboard in your own handwriting 
+ ![](http://byuimath.com/statistics_files/SLRTheory.jpg)
+
+
+
+
+<!-- Uncomment the code below, and insert your own picture file path to load the picture of your version of this chalkboard.-->
+
+ ![](../math 425.jpg) 
+ 
+
+### Problems 1.29 and 1.30 <span id=points>{2}</span><span id=report>{ A=2 | E=0 }</span>
+
+a. the graph indicates that if X=0, intercept of model always would be 0. the regression function plot will start from the (0,0) point. 
+
+b. the graph indicates that the line appear to be horizontal starting on the location of $\beta_0$ value.
+ 
+### Problem 1.32 <span id=points>{2}</span><span id=report>{ A=0 | E=0 }</span>
+ 
+### Problem 1.33 <span id=points>{4}</span><span id=report>{ A=0 | E=0 }</span>
+ 
+### Problem 1.34 <span id=points>{3}</span><span id=report>{ A=0 | E=0 }</span>
+
+
+<br/> 
+
+## Application Points <span id=headpoints>{19} Possible</span>
+
+
+<a id=datalink target="_blank" href=http://www.stat.ufl.edu/~rrandles/sta4210/Rclassnotes/data/textdatasets/index.html>Download Data Files</a>
+
+
+
+### Problem 1.19 <span id=recpoints>{4}</span><span id=report>{ A=4 | E=0 }</span>
+
+```{r}
+mydata1 <- fread('http://users.stat.ufl.edu/~rrandles/sta4210/Rclassnotes/data/textdatasets/KutnerData/Chapter%20%201%20Data%20Sets/CH01PR19.txt')
+colnames(mydata1) <- c("Y","X")
+lm1 <- lm(data = mydata1, Y ~ X)
+answer1 <- summary(lm1)
+pander(answer1)
+plot(data = mydata1, Y ~ X, main = '1.19 QUESTION', xlab = 'ACT test score', ylab = 'GPA' )
+abline(lm1, col = 'red')
+```
+
+1. $\beta_0$ = 2.114  $\beta_1$ = 0.03883  $Y_i$ = 2.114 + 0.03883 * $X_i$
+2. somewhat fit with the line, but there are a lot of outliers existing around the line.
+3. Y = 2.114 + 0.03883 * 30 [3.2789]
+4. 0.03883
+
+```{r getp19}
+# Load the Problem 1.19 Data into the object "p1.19":
+p1.19 <- read.table("http://www.stat.ufl.edu/~rrandles/sta4210/Rclassnotes/data/textdatasets/KutnerData/Chapter%20%201%20Data%20Sets/CH01PR19.txt")
+
+# Rewrite the column names to be "Y" and "X" to match the textbook:
+colnames(p1.19) <- c("Y","X")
+```
+
+
+
+
+### Problem 1.20 <span id=recpoints>{4}</span><span id=report>{ A=4 | E=0 }</span> 
+
+```{r}
+mydata2 <- fread('http://users.stat.ufl.edu/~rrandles/sta4210/Rclassnotes/data/textdatasets/KutnerData/Chapter%20%201%20Data%20Sets/CH01PR20.txt')
+colnames(mydata2) <- c("Y","X")
+lm2 <- lm(data = mydata2, Y ~ X)
+answer2 <- summary(lm2)
+pander(answer2)
+plot(data = mydata2, Y ~ X , main = '1.20 QUESTION', xlab = 'the number of copiers serviced ', ylab = 'the total number of minutes spent by the service person' )
+abline(lm2, col = 'blue')
+```
+
+
+1. $\beta_0$ = -0.5802  $\beta_1$ = 15.04   $Y_i$ = -0.5802  + 15.04 * $X_i$
+2. the line fits into quite well
+3. since the p-value of intercept($\beta_0$) is higher than 0.05 (level of significance), we do not have enough evidence to reject the NULL.
+4. Y = -0.5802  + 15.04 * 5 [74.6198]
+
+```{r getp20}
+# Load the Data:
+p1.20 <- read.table("http://www.stat.ufl.edu/~rrandles/sta4210/Rclassnotes/data/textdatasets/KutnerData/Chapter%20%201%20Data%20Sets/CH01PR20.txt")
+
+# Rewrite the column names to be "Y" and "X" to match the textbook:
+colnames(p1.20) <- c("Y","X")
+```
+
+
+
+### Problem 1.21 <span id=points>{4}</span><span id=report>{ A=4 | E=0 }</span> 
+
+```{r getp21}
+# Load the Data:
+p1.21 <- read.table("http://www.stat.ufl.edu/~rrandles/sta4210/Rclassnotes/data/textdatasets/KutnerData/Chapter%20%201%20Data%20Sets/CH01PR21.txt")
+
+# Rewrite the column names to be "Y" and "X" to match the textbook:
+colnames(p1.21) <- c("Y","X")
+```
+
+```{r}
+mydata3 <- fread("http://www.stat.ufl.edu/~rrandles/sta4210/Rclassnotes/data/textdatasets/KutnerData/Chapter%20%201%20Data%20Sets/CH01PR21.txt")
+colnames(mydata3) <- c("Y","X")
+lm3 <- lm(data = mydata3, Y ~ X)
+answer3 <- summary(lm3)
+pander(answer3)
+plot(data = mydata3, Y ~ X , main = '1.21 QUESTION', xlab = 'the number of times the carton was transferred', ylab = 'the number of ampules found to be broken upon arrival' )
+abline(lm3, col = 'green')
+```
+
+
+1. $\beta_0$ = 10.2   $\beta_1$ = 4    $Y_i$ = 10.2  + 4 * $X_i$
+2. the line seems fitting into quite well
+3. Y = 10.2  + 4 * 1 [14.2]
+
+### Problem 1.22 <span id=points>{3}</span><span id=report>{ A=0 | E=0 }</span> 
+
+```{r getp22}
+# Load the Data:
+p1.22 <- read.table("http://www.stat.ufl.edu/~rrandles/sta4210/Rclassnotes/data/textdatasets/KutnerData/Chapter%20%201%20Data%20Sets/CH01PR22.txt")
+
+# Rewrite the column names to be "Y" and "X" to match the textbook:
+colnames(p1.22) <- c("Y","X")
+```
+
+
+
+### Problem 1.27 <span id=points>{2}</span><span id=report>{ A=0 | E=0 }</span>
+
+```{r getp27}
+# Load the Data:
+p1.27 <- read.table("http://www.stat.ufl.edu/~rrandles/sta4210/Rclassnotes/data/textdatasets/KutnerData/Chapter%20%201%20Data%20Sets/CH01PR27.txt")
+
+# Rewrite the column names to be "Y" and "X" to match the textbook:
+colnames(p1.27) <- c("Y","X")
+```
+
+
+
+### Problem 1.28 <span id=points>{2}</span><span id=report>{ A=0 | E=0 }</span>
+
+```{r getp28}
+# Load the Data:
+p1.28 <- read.table("http://www.stat.ufl.edu/~rrandles/sta4210/Rclassnotes/data/textdatasets/KutnerData/Chapter%20%201%20Data%20Sets/CH01PR28.txt")
+
+# Rewrite the column names to be "Y" and "X" to match the textbook:
+colnames(p1.28) <- c("Y","X")
+```
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+<style>
+#points {
+  font-size:1em;
+  padding-left:15px;
+  font-weight:bold; 
+  color:#317eac;
+}
+
+#recpoints {
+  font-size:1em;
+  padding-left:15px;
+  font-weight:bold; 
+  color:#7eac31;
+}
+
+#report {
+  font-size:.7em;
+  padding-left:15px;
+  font-weight:normal; 
+  color:#5a5a5a;
+}
+
+#datalink {
+  font-size:.8em;
+  color:#317eac;
+  padding-left:5px;
+}
+
+#note {
+  font-size:.8em;
+  color:#787878;
+}
+
+#headpoints {
+ font-size:12pt;
+ color: #585858; 
+ padding-left: 15px;
+}
+</style>
+ 
+
+ 
+
+ 
