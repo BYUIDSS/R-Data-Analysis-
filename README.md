@@ -1,3 +1,3 @@
-# hello_world
+# R project
 
-Hello, Git-users. My name is Dongchan Lim. I'm psychology major in BYU-I but currently studying data science. 
+This is Dongchan (Richard) Lim's Personal Project for data analysis using R.
